@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SmokeSuite">
+  <test thread-count="5" name="Test">
+  <parameter name="browser" value="Chrome" />
+  <parameter name="searchTerm" value="apple watch series 3" />
+    <classes>
+      <class name="com.test.sites.RegressionSuite.RegressionTests"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- SmokeSuite -->
