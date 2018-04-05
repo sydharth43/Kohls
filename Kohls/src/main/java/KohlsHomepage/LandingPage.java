@@ -18,11 +18,12 @@ public class LandingPage {
 	List <String> suggestionsList;
 	int numberOfSuggestions;
 	
+	//Constructor of landing page
 	public LandingPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		this.driver=driver;		
 	}
 	
+	//Launching home page
 	public String openHomepage(String pageUrl)
 	{
 		driver.get(pageUrl);
@@ -37,8 +38,8 @@ public class LandingPage {
 		}
 	}
 
-	//public SearchResultsPage submitSearch(String searchTerm)
 	
+	//To get the list of auto-complete options
 	public List<String> suggestionsList(String searchTerm) throws InterruptedException
 	{
 		searchTextbox = driver.findElement(By.id("search"));
@@ -60,13 +61,14 @@ public class LandingPage {
 		}
 		return suggestionsList;
 }
+	//To get the number of auto-complete options
 	public int numberOfSuggestions(String searchTerm) {
-		// 
 		suggestions = driver.findElements(By.xpath("//span[class='ta-suggestion-text']"));
 		numberOfSuggestions = suggestions.size();
 		return numberOfSuggestions;
 	}
 
+	//Submit search action
 	public SearchResultsPage submitSearch(String searchTerm) throws InterruptedException {
 		Thread.sleep(4000);
 			driver.findElement(By.name("search")).sendKeys(searchTerm);

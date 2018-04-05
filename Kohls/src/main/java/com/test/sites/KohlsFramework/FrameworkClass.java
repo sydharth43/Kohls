@@ -14,6 +14,7 @@ public class FrameworkClass {
 	private String firefoxdriverPath = "";
 	private String IEdriverPath = "";
 	
+	//Selecting the driver object for a particular browser
 	@Parameters("browser")
 	@BeforeClass	
 	public void setupDriver(String browser) throws Exception
