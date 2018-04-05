@@ -13,12 +13,14 @@ public class SearchResultsPage {
 	String fullText;
 	StringBuffer sbSearchText= new StringBuffer();
 	WebElement customerRating;
-
+	
+	//Constructor for Search Results page
 	public SearchResultsPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
 	}
 	
+	//Class to get the searched text in search results page
 	public String validateSearchResults() throws InterruptedException
 	{
 		Thread.sleep(5000);
@@ -32,6 +34,7 @@ public class SearchResultsPage {
 		return sbSearchText.toString();
 	}
 	
+	//Selecting a filter criteria
 	public void setFilterCriteria(int checkboxValueFromTop, String filterOption) throws InterruptedException
 	{
 		Thread.sleep(5000);
@@ -44,8 +47,7 @@ public class SearchResultsPage {
 		checkboxForSelection.click();	
 	}
 	
-	
-	
+	//Selecting product from search results page
 	public ProductDetailsPage selectProduct()
 	{
 		WebElement product = driver.findElement(By.xpath("//*[@id='content']/div[2]/div[2]/div[1]/div[3]/ul/li[1]/div[1]"));

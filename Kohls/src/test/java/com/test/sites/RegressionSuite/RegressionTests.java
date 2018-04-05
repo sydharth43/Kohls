@@ -19,8 +19,8 @@ import ResultsPage.SearchResultsPage;
 public class RegressionTests extends FrameworkClass{
 	String url = "https://www.kohls.com/";
 	String expectedPageTitle = "Kohl's | Shop Clothing, Shoes, Home, Kitchen, Bedding, Toys & More";
-	//static WebDriver driver=null;
-	
+
+	//Test to verify that customer lands on correct landing page on launching
 	@Test(priority=1)
 	public void verifyPageTitle()
 	{
@@ -30,6 +30,7 @@ public class RegressionTests extends FrameworkClass{
 		Assert.assertEquals(actualPageTitle, expectedPageTitle);		
 	}
 	
+	//Test to validate if search displays products based on search term	
 	@Test(enabled=false)
 	@Parameters("searchTerm")
 	public void validateSearch(String searchTerm) throws InterruptedException
@@ -41,6 +42,7 @@ public class RegressionTests extends FrameworkClass{
 		Assert.assertEquals(actualResult, searchTerm);
 	}
 	
+	//Test to get the number of search suggestions
 	@Test(enabled=false)
 	@Parameters("searchTerm")
 	public void getNumberOfSearchResults(String searchTerm)
@@ -50,6 +52,7 @@ public class RegressionTests extends FrameworkClass{
 		System.out.println("The number of search suggestions for " + searchTerm + " are - " + numOfSuggestions);
 	}
 	
+	//Test to see the list of auto-complete suggestions for a particular search term
 	@Test(enabled=false)
 	@Parameters("searchTerm")
 	public void listOfSearchSuggestions(String searchTerm) throws InterruptedException
@@ -64,6 +67,7 @@ public class RegressionTests extends FrameworkClass{
 		
 	}
 	
+	//Test customer navigation till adding a product to cart - E2E flow	
 	@Test(dependsOnMethods="verifyPageTitle")
 	@Parameters("searchTerm")
 	public void selectingProduct(String searchTerm) throws InterruptedException
@@ -76,7 +80,8 @@ public class RegressionTests extends FrameworkClass{
 		ProductDetailsPage productdetailspage = new ProductDetailsPage(driver);
 		productdetailspage.addToBag();				
 	}
-	
+
+	//Test navigation of feedback module
 	@Test(dependsOnMethods = "verifyPageTitle")
 	public void selectFeedback() throws Exception 
 	{
