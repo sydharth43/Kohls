@@ -30,6 +30,20 @@ public class RegressionTests extends FrameworkClass{
 		Assert.assertEquals(actualPageTitle, expectedPageTitle);		
 	}
 	
+	//Test customer navigation till adding a product to cart - E2E flow	
+		@Test(dependsOnMethods="verifyPageTitle")
+		@Parameters("searchTerm")
+		public void selectingProduct(String searchTerm) throws InterruptedException
+		{	
+			LandingPage landingpage = new LandingPage(driver);
+			landingpage.submitSearch(searchTerm);
+			SearchResultsPage searchresultspage = new SearchResultsPage(driver);
+			searchresultspage.setFilterCriteria(1, "Customer Rating");
+			searchresultspage.selectProduct();
+			ProductDetailsPage productdetailspage = new ProductDetailsPage(driver);
+			productdetailspage.addToBag();				
+		}
+	
 	//Test to validate if search displays products based on search term	
 	@Test(enabled=false)
 	@Parameters("searchTerm")
@@ -65,20 +79,6 @@ public class RegressionTests extends FrameworkClass{
 			System.out.println("The following are the auto-complete suggestions for the" + searchTerm +"- /n" + suggestionsListIterator.next());
 		}		
 		
-	}
-	
-	//Test customer navigation till adding a product to cart - E2E flow	
-	@Test(dependsOnMethods="verifyPageTitle")
-	@Parameters("searchTerm")
-	public void selectingProduct(String searchTerm) throws InterruptedException
-	{	
-		LandingPage landingpage = new LandingPage(driver);
-		landingpage.submitSearch(searchTerm);
-		SearchResultsPage searchresultspage = new SearchResultsPage(driver);
-		searchresultspage.setFilterCriteria(1, "Customer Rating");
-		searchresultspage.selectProduct();
-		ProductDetailsPage productdetailspage = new ProductDetailsPage(driver);
-		productdetailspage.addToBag();				
 	}
 
 	//Test navigation of feedback module

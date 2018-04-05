@@ -55,8 +55,8 @@ public class FrameworkClass {
 	public void clickfeedbackModule(String typeofFeedback) throws Exception
 	{
 		WebDriverWait wait = new WebDriverWait(driver,10);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("oo_tab"))));
-		feedbackModule = driver.findElement(By.id("//oo_tab"));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("#oo_tab"))));
+		feedbackModule = driver.findElement(By.cssSelector("#oo_tab"));
 		feedbackModule.click();
 		driver.switchTo().defaultContent();
 		if(typeofFeedback.equalsIgnoreCase("Website Feedback"))

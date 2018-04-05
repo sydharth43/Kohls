@@ -50,7 +50,7 @@ public class SearchResultsPage {
 	//Selecting product from search results page
 	public ProductDetailsPage selectProduct()
 	{
-		WebElement product = driver.findElement(By.xpath("//*[@id='content']/div[2]/div[2]/div[1]/div[3]/ul/li[1]/div[1]"));
+		WebElement product = driver.findElement(By.xpath("//div[@data-list='0']/preceding-sibling::div"));		
 		product.click();
 		return new ProductDetailsPage(driver);
 	}
